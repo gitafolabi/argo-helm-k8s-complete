@@ -1,0 +1,28 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: grafana
+  namespace: monitoring
+spec:
+  destination:
+    namespace: monitoring
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    helm:
+    path: apps/grafana
+    repoURL: 'https://github.com/gitafolabi/argo-helm-k8s-complete'
+    targetRevision: HEAD
+  syncPolicy:
+    retry:
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m0s
+      limit: 5
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

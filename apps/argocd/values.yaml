@@ -22,7 +22,7 @@ server:
       nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
 configs:
   cm:
-    admin.enabled: false
+    admin.enabled: true
   params:
     server.insecure: true
     server.disable.auth: true
