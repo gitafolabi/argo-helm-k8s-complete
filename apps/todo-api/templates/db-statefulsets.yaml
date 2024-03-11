@@ -1,0 +1,43 @@
+# templates/statefulset.yaml
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Values.postgres.labels.app }}-statefulset
+  labels:
+    app: {{ .Values.postgres.labels.app }}
+spec:
+  serviceName: {{ .Values.postgres.labels.app }}
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.postgres.labels.app }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.postgres.labels.app }}
+    spec:
+      containers:
+        - name: {{ .Values.postgres.labels.app }}
+          image: postgres:latest
+          env:
+            - name: POSTGRES_USER
+              value: {{ .Values.postgresql.auth.duser }} 
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: todo-db-secrets
+                  key: db-password
+          ports:
+            - containerPort: {{ .Values.postgresql.auth.port }} 
+          volumeMounts:
+            - name: {{ .Values.backend.deploy.name }}-pvc
+              mountPath: /var/lib/postgresql/data
+  volumeClaimTemplates:
+    - metadata:
+        name: {{ .Values.backend.deploy.name }}-pvc
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 1Gi

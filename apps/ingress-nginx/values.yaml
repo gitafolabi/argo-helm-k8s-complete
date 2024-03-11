@@ -1,0 +1,37 @@
+---
+controller:
+  admissionWebhooks:
+    certManager:
+      enable: false
+  extraArgs:
+    publish-status-address: localhost
+  hostPort:
+    enabled: true
+  publishService:
+    enabled: false
+  service:
+    type: NodePort
+  tolerations:
+    - effect: NoSchedule
+      key: node-role.kubernetes.io/master
+      operator: Equal
+    - effect: NoSchedule
+      key: node-role.kubernetes.io/control-plane
+      operator: Equal
+  watchIngressWithoutClass: true
+  nodeSelector:
+    ingress-ready: "true"
+    kubernetes.io/os: linux
+  config:
+    custom-http-errors: >-
+      401,403,404,500,501,502,503
+defaultBackend:
+  enabled: true
+  image:
+    repository: ghcr.io/tarampampam/error-pages
+    tag: 2.26.0
+  extraEnvs:
+  - name: TEMPLATE_NAME
+    value: ghost
+  - name: SHOW_DETAILS
+    value: 'true'

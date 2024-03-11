@@ -1,0 +1,14 @@
+
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ .Values.backend.deploy.name }}-pvc
+  labels:
+    app: {{ .Values.backend.labels.app }}
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: {{ .Values.backend.labels.app }}-storage

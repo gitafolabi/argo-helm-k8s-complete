@@ -1,0 +1,66 @@
+backend:
+  labels:
+    app: todo-api
+  image: 
+    name: gigpops/be-applet
+    pullPolicy: IfNotPresent
+    tag: latest
+  port: 8000
+
+  deploy:
+    name: todo-api
+
+  autoscaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 2
+    metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target: 
+          type: Utilization
+          averageUtilization: 60
+    - type: Resource
+      resource:
+        name: memory
+        target: 
+          type: Utilization
+          averageUtilization: 60
+
+
+postgres:
+  labels:
+    app: todo-db
+  enabled: true
+  image:
+    name: postgres
+    tag: 
+  auth:
+      host: "postgres"
+      user: "admin"
+      db-password: "password"
+      port: "5432"
+
+ingress:
+  enabled: true
+
+  ingressClassName: nginx
+
+  servicePort: http
+
+service:
+  enabled: true
+  additionalLabels:
+  
+  ports:
+    - port: 8080
+      name: http
+      protocol: TCP
+      targetPort: 8080
+  type: ClusterIP
+
+serviceAccount:
+  enabled: false
+  annotations: {}
+  name: ""

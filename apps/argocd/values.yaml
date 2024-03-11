@@ -1,0 +1,28 @@
+---
+crds:
+  install: true
+  keep: true
+
+logging:
+  format: json
+  level: info
+
+global:
+  image:
+    tag: v2.4.28
+
+server:
+  extensions:
+    enabled: true
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    hostname: argocd.apps.127.0.0.1.nip.io
+    annotations:
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+configs:
+  cm:
+    admin.enabled: false
+  params:
+    server.insecure: true
+    server.disable.auth: true

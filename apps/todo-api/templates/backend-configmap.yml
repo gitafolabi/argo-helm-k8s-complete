@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.backend.deploy.name }}-cm
+  labels:
+    app: {{ .Values.backend.labels.app }}
+data:
+  DATABASE_URL: postgresql://postgres:mysecret@postgres:5432/postgres

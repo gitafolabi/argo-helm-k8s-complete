@@ -1,0 +1,31 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .Values.backend.labels.app }}
+  namespace: argocd
+#   finalizers:
+#     - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: todo-api
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    helm:
+    path: apps/todo-api
+    repoURL: 'https://github.com/gitafolabi/devops-tech-challenge'
+    targetRevision: HEAD
+  syncPolicy:
+    retry:
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m0s
+      limit: 5
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+

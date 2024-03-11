@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.postgres.labels.app }}-service
+  labels:
+    app: {{ .Values.postgres.labels.app }}
+
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.postgres.auth.port }}
+      targetPort: {{ .Values.postgres.auth.port }}
+      protocol: TCP
+  selector:
+   app: {{ .Values.postgres.labels.app }}

@@ -1,0 +1,51 @@
+frontend:
+  labels:
+    app: todo-list
+  image:
+    name: gigpops/fe-applet
+    pullPolicy: IfNotPresent
+    tag: latest
+  port: 3000
+
+  autoscaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 3
+    metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target: 
+          type: Utilization
+          averageUtilization: 60
+    - type: Resource
+      resource:
+        name: memory
+        target: 
+          type: Utilization
+          averageUtilization: 60
+    # targetMemoryUtilizationPercentage:
+
+  serviceAccount:
+    enabled: true
+    annotations: {}
+    name: ""
+
+
+  ingress:
+    enabled: true
+
+  ingressClassName: nginx
+
+  servicePort: http
+
+service:
+  enabled: true
+  additionalLabels:
+  
+  ports:
+    - port: 3000
+      name: http
+      protocol: TCP
+      targetPort: 3000
+  type: ClusterIP
