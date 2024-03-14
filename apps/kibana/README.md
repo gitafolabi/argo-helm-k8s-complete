@@ -9,7 +9,7 @@ Kibana is a free and open user interface that lets you visualize your Elasticsea
 To install the chart with the release name `kibana`:
 
 ```shell
-$ helm repo add romanow https://romanow.github.io/helm-charts/
+$ helm repo add romanow https://github.com/gitafolabi/helm-charts/
 $ helm repo update
 $ helm install kibana romanow/kibana
 ```
@@ -144,4 +144,4 @@ true
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| Romanov Alexey | <romanowalex@mail.ru> | <https://romanow.github.io> |
+| Afolabi Omotoso | <afolabi.omotoso@outlook.com> | <https://github.com/gitafolabi> |

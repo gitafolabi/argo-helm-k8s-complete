@@ -9,7 +9,7 @@ Logstash is a free and open server-side data processing pipeline that ingests da
 To install the chart with the release name `logstash`:
 
 ```shell
-$ helm repo add romanow https://romanow.github.io/helm-charts/
+$ helm repo add romanow https://github.com/gitafolabi/helm-charts/
 $ helm repo update
 $ helm install logstash romanow/logstash
 ```
@@ -147,4 +147,4 @@ false
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| Romanov Alexey | <romanowalex@mail.ru> | <https://romanow.github.io> |
+| Afolabi Omotoso | <afolabi.omotoso@outlook.com> | <https://github.com/gitafolabi> |

@@ -9,7 +9,7 @@ Elasticsearch is a distributed, RESTful search and analytics engine capable of a
 To install the chart with the release name `elasticsearch`:
 
 ```shell
-$ helm repo add romanow https://romanow.github.io/helm-charts/
+$ helm repo add romanow https://github.com/gitafolabi/helm-charts/
 $ helm repo update
 $ helm install elasticsearch romanow/elasticsearch
 ```
@@ -153,4 +153,4 @@ true
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| Romanov Alexey | <romanowalex@mail.ru> | <https://romanow.github.io> |
+| Afolabi Omotoso | <afolabi.omotoso@outlook.com> | <https://github.com/gitafolabi> |

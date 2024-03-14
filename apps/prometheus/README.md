@@ -9,7 +9,7 @@ Prometheus collects and stores its metrics as time series data, i.e. metrics inf
 To install the chart with the release name `prometheus`:
 
 ```shell
-$ helm repo add romanow https://romanow.github.io/helm-charts/
+$ helm repo add romanow https://github.com/gitafolabi/helm-charts/
 $ helm repo update
 $ helm install prometheus romanow/prometheus
 ```
@@ -108,4 +108,4 @@ null
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| Romanov Alexey | <romanowalex@mail.ru> | <https://romanow.github.io> |
+| Afolabi Omotoso | <afolabi.omotoso@outlook.com> | <https://github.com/gitafolabi> |

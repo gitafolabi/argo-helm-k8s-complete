@@ -9,7 +9,7 @@ Prometheus exporter for hardware and OS metrics exposed by *NIX kernels, written
 To install the chart with the release name `node-exporter`:
 
 ```shell
-$ helm repo add romanow https://romanow.github.io/helm-charts/
+$ helm repo add romanow https://github.com/gitafolabi/helm-charts/
 $ helm repo update
 $ helm install node-exporter romanow/node-exporter
 ```
@@ -99,4 +99,4 @@ helm uninstall node-exporter
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-| Romanov Alexey | <romanowalex@mail.ru> | <https://romanow.github.io> |
+| Afolabi Omotoso | <afolabi.omotoso@outlook.com> | <https://github.com/gitafolabi> |
