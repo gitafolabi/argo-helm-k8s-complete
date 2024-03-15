@@ -1,8 +1,3 @@
-# DevOps Tech Challenge Environment
-
-> [!WARNING]
-> Make sure dependencies are installed before provisioning the environment
-
 ## Requirements
 
 - [homebrew](https://brew.sh/) to install dependencies
